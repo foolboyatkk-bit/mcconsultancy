@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  /* 1. Sets DM Sans as your default sans-serif font across the whole site */
+  --font-sans: "DM Sans", sans-serif;
+
+  /* 2. Sets up your custom brand colors */
+  --color-nav-active: #1e1b4b;      /* Dark navy for "Home" */
+  --color-nav-link: #0ea5e9;        /* Bright blue for other links */
+  --color-nav-hover: #0284c7;       /* Slightly darker blue for hover states */
+  --color-nav-topStrip: #4a3b4c;    /* The thin top border color */
+  --color-nav-bottomStrip: #1e1b4b; /* The thicker bottom border color */
+}
