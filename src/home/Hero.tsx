@@ -9,7 +9,7 @@ const SLIDES = [
     id: 1,
     title: "Empowering Futures Through Education",
     description: "Affordable tuition, globally recognized degrees, and full support from application to arrival—your medical career starts here.",
-    image: "/doctorhero2.png",
+    image: "/doctorhero2.webp",
     buttons: [
       { text: "Get Started", primary: true,  link: "/contact" },
       { text: "Contact Us",  primary: false, link: "/contact" },
