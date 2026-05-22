@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import BUILDING_IMG  from "../../../assets/countries/northwestern/buildingImg.webp";
 import HERO_IMG      from "../../../assets/countries/northwestern/hero3.jpg";
 import CEREMONY_IMG  from "../../../assets/countries/northwestern/ceremony.png";
-import CAMPUS_IMG    from "../../../assets/countries/stavropol/univ1img2.jpg";
 import FACULTY_IMG   from "../../../assets/countries/stavropol/univ1img4.svg";
 import HOSTEL_IMG    from "../../../assets/countries/stavropol/univ1img5.jpg";
 

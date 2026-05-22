@@ -1,4 +1,3 @@
-import React from 'react';
 
 // ─── STATIC STYLES ───
 const GLOBAL_STYLES = `
