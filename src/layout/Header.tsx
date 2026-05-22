@@ -88,6 +88,7 @@ export default function Header() {
           {/* ── Logo ── */}
           <NavLink
             to="/"
+            onClick={() => window.scrollTo(0, 0)}
             className="shrink-0 leading-none opacity-100 transition-opacity duration-200 hover:opacity-75"
           >
             <img
@@ -152,7 +153,10 @@ export default function Header() {
                           <NavLink
                             key={uni.to}
                             to={uni.to}
-                            onClick={() => setDropdownOpen(false)}
+                            onClick={() => {
+                              setDropdownOpen(false);
+                              window.scrollTo(0, 0);
+                            }}
                             className="block px-4 py-3.25 text-[0.83rem] font-semibold text-[#1a1a2e] rounded-[4px] hover:bg-[#eef3fd] hover:text-[#1a3a8f] transition-colors duration-150 leading-snug"
                           >
                             {uni.name}
@@ -170,6 +174,7 @@ export default function Header() {
                   key={to}
                   to={to}
                   end={to === "/"}
+                  onClick={() => window.scrollTo(0, 0)}
                   className={({ isActive }) =>
                     `relative pb-[3px] text-sm font-semibold uppercase tracking-[0.09em] transition-colors duration-250 hover:text-[#1a3a8f] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-gradient-to-r after:from-[#1a3a8f] after:via-[#1976d2] after:to-[#1a3a8f] after:rounded-[2px] after:transition-[width] after:duration-[380ms] hover:after:w-full ${
                       isActive
@@ -241,7 +246,10 @@ export default function Header() {
                         <NavLink
                           key={uni.to}
                           to={uni.to}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            window.scrollTo(0, 0);
+                          }}
                           className="block text-[0.73rem] text-[#374151] py-2.25 px-4 rounded-sm hover:text-[#1a3a8f] hover:bg-[#eef3fd] border-l-2 border-[#dbe8f8] transition-colors"
                         >
                           {uni.name}
@@ -259,7 +267,10 @@ export default function Header() {
                 key={to}
                 to={to}
                 end={to === "/"}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  window.scrollTo(0, 0);
+                }}
                 style={{ transitionDelay: `${i * 35}ms` }}
                 className={({ isActive }) =>
                   `block text-[0.75rem] uppercase tracking-[0.09em] py-3.25 px-4 rounded-sm border-l-2 transition-all duration-300 transform ${
@@ -284,7 +295,10 @@ export default function Header() {
           {/* Mobile CTA */}
           <NavLink
             to="/contact"
-            onClick={() => setMobileOpen(false)}
+            onClick={() => {
+              setMobileOpen(false);
+              window.scrollTo(0, 0);
+            }}
             style={{ transitionDelay: `${NAV_LINKS.length * 35}ms` }}
             className={`block text-center text-[0.72rem] font-medium uppercase tracking-[0.11em] text-white py-3.25 px-5 mx-4 mt-1 mb-1.5 rounded-xs bg-[linear-gradient(110deg,#1a3a8f_0%,#1565c0_40%,#1976d2_50%,#1565c0_65%,#1a3a8f_100%)] bg-size-[220%_auto] transition-all duration-500 ease-out hover:bg-right hover:shadow-[0_6px_24px_rgba(26,58,143,0.28)] hover:-translate-y-[1px] active:translate-y-0 transform ${
               mobileOpen

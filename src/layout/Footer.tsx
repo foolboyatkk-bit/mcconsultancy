@@ -98,7 +98,7 @@ export default function Footer() {
             
             {/* ── Col 1: Logo + Tagline ── */}
             <div style={STYLES.logoWrap}>
-              <Link to="/" style={{ display: "inline-block", lineHeight: 0 }}>
+              <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ display: "inline-block", lineHeight: 0 }}>
                 <img src="/logo.webp" alt="M&C Educational Consultancy" style={STYLES.logoImg} />
               </Link>
               <p className="text-sm" style={STYLES.tagline}>
@@ -113,7 +113,11 @@ export default function Footer() {
                 {QUICK_LINKS.map(({ name, path }) => (
                   <li key={name} style={STYLES.listItem}>
                     <span style={STYLES.listDot} />
-                    <Link to={path} className="mc-footer-link text-sm">
+                    <Link 
+                      to={path} 
+                      className="mc-footer-link text-sm"
+                      onClick={() => window.scrollTo(0, 0)}
+                    >
                       {name}
                     </Link>
                   </li>
