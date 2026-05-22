@@ -9,7 +9,7 @@ const SLIDES = [
     id: 1,
     title: "Empowering Futures Through Education",
     description: "Affordable tuition, globally recognized degrees, and full support from application to arrival—your medical career starts here.",
-    image: "/doctor.webp",
+    image: "/doctorhero2.png",
     buttons: [
       { text: "Get Started", primary: true, link: "/contact" },
       { text: "Contact Us", primary: false, link: "/contact" }
@@ -19,7 +19,7 @@ const SLIDES = [
     id: 2,
     title: "Your Journey to Medical Excellence",
     description: "Join top-ranked medical universities abroad with our comprehensive guidance and expert counseling.",
-    image: "/CarouselImg.png",
+    image: "/doctorhero1.png",
     buttons: [
       { text: "Get Started", primary: true, link: "/contact" },
       { text: "Contact Us", primary: false, link: "/contact" }
