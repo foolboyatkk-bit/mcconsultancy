@@ -1,29 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 
-// ─── STATIC STYLES ───
-
 const GLOBAL_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
 
-  .fs-section {
-    font-family: 'DM Sans', sans-serif;
-    overflow: hidden;
-  }
+  .fs-section { font-family: 'DM Sans', sans-serif; overflow: hidden; }
 
-  @keyframes fs-fade-up { 
-    0% { opacity: 0; transform: translateY(30px); } 
-    100% { opacity: 1; transform: translateY(0); } 
-  }
-  
-  @keyframes fs-slide-right { 
-    0% { opacity: 0; transform: translateX(-40px); } 
-    100% { opacity: 1; transform: translateX(0); } 
-  }
+  @keyframes fs-fade-up { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+  @keyframes fs-slide-right { 0% { opacity: 0; transform: translateX(-40px); } 100% { opacity: 1; transform: translateX(0); } }
 
-  .fs-hidden-start {
-    opacity: 0;
-    will-change: transform, opacity;
-  }
+  .fs-hidden-start { opacity: 0; will-change: transform, opacity; }
 
   .is-visible .anim-img { animation: fs-slide-right 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards; animation-delay: 0.1s; }
   .is-visible .anim-text { animation: fs-fade-up 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards; animation-delay: 0.3s; }
@@ -60,7 +45,7 @@ export default function FounderSection() {
 
       <section 
         ref={sectionRef}
-        className={`fs-section w-full py-16 px-4 sm:px-6 lg:px-8 relative ${isVisible ? 'is-visible' : ''}`}
+        className={`fs-section w-full py-16 sm:py-24 px-5 sm:px-12 relative overflow-hidden ${isVisible ? 'is-visible' : ''}`}
         style={{
           backgroundColor: "#0a1128",
           backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)",
@@ -68,12 +53,9 @@ export default function FounderSection() {
         }}
       >
         <div className="max-w-6xl mx-auto relative z-10">
-          
-          {/* Reduced gap from 20 to 12 */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Image Container: Reduced span from 7 to 4 */}
-            <div className="fs-hidden-start anim-img order-1 lg:col-span-4 w-full max-w-75 mx-auto lg:mx-0">
+            <div className="fs-hidden-start anim-img order-1 lg:col-span-4 w-full max-w-[320px] sm:max-w-95 lg:max-w-full mx-auto lg:mx-0">
               <div className="fs-image-frame p-1.5 rounded-xl overflow-hidden shadow-2xl">
                 <div className="w-full overflow-hidden rounded-lg relative bg-[#eef3fd] aspect-4/5">
                   <img 
@@ -85,7 +67,6 @@ export default function FounderSection() {
               </div>
             </div>
 
-            {/* Content Container: Increased span from 5 to 8 */}
             <div className="fs-hidden-start anim-text order-2 lg:col-span-8 flex flex-col items-start text-left">
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "0.65rem", fontWeight: 600,
@@ -101,7 +82,7 @@ export default function FounderSection() {
                 Dr. M.S. Ramesh Babu
               </h2>
               
-              <p className="text-[0.95rem] font-light text-blue-100/70 leading-relaxed text-justify lg:text-left">
+              <p className="text-[0.95rem] font-light text-blue-100/70 leading-relaxed text-left">
                 Welcome to M and C Educational Consultancy. We are a team of experienced and 
                 passionate professionals who are dedicated to helping students achieve their dreams of 
                 studying MBBS in Russia. I founded M and C Educational Consultancy with the vision of 

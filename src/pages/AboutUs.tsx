@@ -7,14 +7,14 @@ import WhyChooseUs from '../aboutus/WhyChooseUs'
 
 function AboutUs() {
   return (
-    <div>
+    <main className="w-full max-w-[100vw] overflow-x-hidden flex flex-col">
         <EmpoweringHero/>
         <AboutUsMain/>
         <MissionVisionTimeline/>
         <FounderSection/>
         <CertificatesAccreditations/>
         <WhyChooseUs/>
-    </div>
+    </main>
   )
 }
 

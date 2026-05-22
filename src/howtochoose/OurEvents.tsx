@@ -77,11 +77,11 @@ export default function OurEvents() {
       >
         {/* PERFORMANCE FIX: Replaced heavy CSS blur() filters with lightweight radial gradients */}
         <div 
-          className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none" 
+          className="absolute top-0 right-0 w-150 h-150 pointer-events-none" 
           style={{ background: 'radial-gradient(circle, rgba(26,58,143,0.2) 0%, transparent 60%)', transform: 'translate(20%, -20%)' }} 
         />
         <div 
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none" 
+          className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none" 
           style={{ background: 'radial-gradient(circle, rgba(66,165,245,0.1) 0%, transparent 60%)', transform: 'translate(-20%, 20%)' }} 
         />
 
@@ -120,7 +120,7 @@ export default function OurEvents() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <div className="oe-image-frame p-2 rounded-2xl group overflow-hidden">
                 <div className="w-full h-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="gallery1.svg" 
                     alt="Parents and students interacting around a table" 
@@ -130,7 +130,7 @@ export default function OurEvents() {
               </div>
               <div className="oe-image-frame p-2 rounded-2xl group overflow-hidden">
                 <div className="w-full h-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="gallery2.svg" 
                     alt="Group discussion with students and parents" 
@@ -155,7 +155,7 @@ export default function OurEvents() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <div className="oe-image-frame p-2 rounded-2xl group overflow-hidden">
                 <div className="w-full h-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="gallery3.svg" 
                     alt="Consultancy staff speaking to students and parents" 
@@ -165,7 +165,7 @@ export default function OurEvents() {
               </div>
               <div className="oe-image-frame p-2 rounded-2xl group overflow-hidden">
                 <div className="w-full h-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="gallery4.svg" 
                     alt="Large group photo of students and parents" 

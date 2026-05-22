@@ -22,7 +22,7 @@ export default function WhyChooseUs() {
     >
       {/* Background Glow Effects (same style as events) */}
       <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
+        className="absolute top-0 right-0 w-125 h-125 pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(26,58,143,0.25) 0%, transparent 60%)",
@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
         }}
       />
       <div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
+        className="absolute bottom-0 left-0 w-100 h-100 pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(66,165,245,0.12) 0%, transparent 60%)",
@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
 
           <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
             Your Trusted{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-blue-200 to-white text-transparent bg-clip-text">
+            <span className="bg-linear-to-r from-blue-400 via-blue-200 to-white text-transparent bg-clip-text">
               Education Partner
             </span>
           </h2>
@@ -62,7 +62,7 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className="group p-6 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-blue-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(96,165,250,0.15)]"
+                className="group p-6 rounded-2xl border border-white/10 bg-white/3 backdrop-blur-sm hover:border-blue-400/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(96,165,250,0.15)]"
               >
                 <div className="flex items-start gap-4">
                   {/* Icon */}

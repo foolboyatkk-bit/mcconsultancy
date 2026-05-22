@@ -77,15 +77,15 @@ export default function OurStudents() {
       >
         {/* Performance-friendly Ambient Glows */}
         <div 
-          className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none" 
+          className="absolute top-0 left-0 w-150 h-150 pointer-events-none" 
           style={{ background: 'radial-gradient(circle, rgba(26,58,143,0.2) 0%, transparent 60%)', transform: 'translate(-20%, -20%)' }} 
         />
         <div 
-          className="absolute bottom-1/4 right-0 w-[500px] h-[500px] pointer-events-none" 
+          className="absolute bottom-1/4 right-0 w-125 h-125 pointer-events-none" 
           style={{ background: 'radial-gradient(circle, rgba(66,165,245,0.1) 0%, transparent 60%)', transform: 'translate(20%, 20%)' }} 
         />
 
-        <div className="max-w-[85rem] mx-auto relative z-10">
+        <div className="max-w-340 mx-auto relative z-10">
           
           {/* ── Block 1: Content Left, Image Right ── */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
@@ -116,7 +116,7 @@ export default function OurStudents() {
             <div className="os-hidden-start anim-2 order-2 lg:col-span-7 w-full">
               <div className="os-image-frame p-2 rounded-2xl group overflow-hidden w-full shadow-2xl">
                 <div className="w-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 via-transparent to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 via-transparent to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="img1(1).svg" 
                     alt="Group of students arriving at the terminal abroad" 
@@ -136,7 +136,7 @@ export default function OurStudents() {
             <div className="os-hidden-start anim-3 order-2 lg:order-1 lg:col-span-7 w-full">
               <div className="os-image-frame p-2 rounded-2xl group overflow-hidden w-full shadow-2xl">
                 <div className="w-full overflow-hidden rounded-xl relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 via-transparent to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 via-transparent to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img 
                     src="img2.svg" 
                     alt="Group of successful students in doctor coats" 

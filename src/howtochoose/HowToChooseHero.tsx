@@ -35,7 +35,6 @@ const GLOBAL_STYLES = `
   .ch-btn-ghost:hover { background: #eef3fd; color: #1a3a8f; transform: translateY(-1px); }
 `;
 
-// Add the type definition right here
 const STYLES: Record<string, React.CSSProperties> = {
   section: {
     position: "relative",
@@ -48,7 +47,7 @@ const STYLES: Record<string, React.CSSProperties> = {
     position: "absolute",
     top: "-10px",
     right: "-20px",
-    fontSize: "clamp(80px, 14vw, 180px)",
+    fontSize: "clamp(50px, 14vw, 180px)", // Tweaked minimum size for small screens
     fontWeight: 800,
     color: "transparent",
     WebkitTextStroke: "1.5px rgba(26,58,143,0.07)",
@@ -88,29 +87,8 @@ const STYLES: Record<string, React.CSSProperties> = {
   mainContent: {
     maxWidth: "1280px",
     margin: "0 auto",
-    padding: "72px 24px 68px 48px",
     position: "relative",
     zIndex: 2,
-  },
-  breadcrumbWrap: {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
-    marginBottom: "28px",
-  },
-  bcText: {
-    fontSize: "0.68rem",
-    fontWeight: 500,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-    color: "#6b7280",
-  },
-  bcActive: {
-    fontSize: "0.68rem",
-    fontWeight: 500,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
-    color: "#1a3a8f",
   },
   eyebrow: {
     display: "inline-flex",
@@ -134,7 +112,7 @@ const STYLES: Record<string, React.CSSProperties> = {
     backgroundColor: "#1976d2",
   },
   heading: {
-    fontSize: "clamp(2rem, 5vw, 3.75rem)",
+    fontSize: "clamp(2rem, 6vw, 3.75rem)", // Slightly more fluid
     fontWeight: 700,
     lineHeight: 1.15,
     color: "#0f172a",
@@ -150,8 +128,10 @@ const STYLES: Record<string, React.CSSProperties> = {
   dividerWrap: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center", // Ensures it stays centered
     gap: "12px",
     margin: "28px 0",
+    width: "100%", // Ensures it scales down on mobile
     maxWidth: "480px",
   },
   lineLong: {
@@ -159,49 +139,13 @@ const STYLES: Record<string, React.CSSProperties> = {
     flex: 1,
     background: "linear-gradient(90deg, #1a3a8f, #93b4e8)",
   },
-  lineShort: { height: "1px", width: "100px", backgroundColor: "#dbe8f8" },
   bodyText: {
-    fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+    fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
     fontWeight: 300,
     lineHeight: 1.8,
     color: "#4b5563",
     maxWidth: "650px",
-    marginBottom: "36px",
   },
-  ctaWrap: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    gap: "14px",
-    marginBottom: "52px",
-  },
-  btnPrimary: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "0.72rem",
-    fontWeight: 500,
-    letterSpacing: "0.1em",
-    textTransform: "uppercase",
-    color: "#ffffff",
-    padding: "13px 28px",
-    textDecoration: "none",
-    display: "inline-block",
-  },
-  btnGhost: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "0.72rem",
-    fontWeight: 500,
-    letterSpacing: "0.1em",
-    textTransform: "uppercase",
-    color: "#374151",
-    padding: "12px 24px",
-    textDecoration: "none",
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
-    border: "1px solid #1976d2",
-    backgroundColor: "transparent",
-  },
-  iconCall: { color: "#1976d2", fontSize: "1rem", lineHeight: 1 },
 };
 
 // ─── MAIN COMPONENT ───
@@ -211,7 +155,7 @@ export default function HowToChooseHero() {
     <>
       <style>{GLOBAL_STYLES}</style>
 
-      <section  style={STYLES.section}>
+      <section style={STYLES.section}>
         {/* ── Giant ghost text watermark ── */}
         <div className="ch-bg-text" style={STYLES.watermark}>
           RUSSIA
@@ -221,7 +165,7 @@ export default function HowToChooseHero() {
         <div className="absolute inset-0 opacity-20 pointer-events-none flex items-end justify-center">
           <svg
             viewBox="0 0 1440 320"
-            className="w-full min-w-360 h-auto"
+            className="w-full min-w-225 h-auto" // Fixed min-w class for Tailwind
             fill="none"
             stroke="#1a3a8f"
             strokeWidth="1.5"
@@ -240,7 +184,7 @@ export default function HowToChooseHero() {
 
         {/* ── Main content ── */}
         <div
-          className="sm:px-12 lg:px-20 flex flex-col justify-center items-center"
+          className="px-5 py-16 sm:px-12 sm:py-24 flex flex-col justify-center items-center w-full"
           style={STYLES.mainContent}
         >
           {/* Eyebrow tag */}
@@ -262,16 +206,17 @@ export default function HowToChooseHero() {
           <div className="ch-divider" style={STYLES.dividerWrap}>
             <div style={STYLES.lineLong} />
             <span style={{ color: "#1976d2", fontSize: "0.6rem" }}>◆</span>
-            <div style={STYLES.lineShort} />
-            <span style={{ color: "#1976d2", fontSize: "0.6rem" }}>◆</span>
+            <div style={STYLES.lineLong} />
           </div>
 
           {/* Body text */}
           <p className="ch-body text-center" style={STYLES.bodyText}>
             Affordable tuition, globally recognized degrees, and full support
             from application to arrival.
-            <br />
-            <br />— your medical career starts here.
+            <br className="hidden sm:block" />
+            <span className="inline-block mt-2 sm:mt-4">
+              — your medical career starts here.
+            </span>
           </p>
         </div>
       </section>

@@ -93,7 +93,7 @@ export default function DoctorsAdviceSection() {
               <p className="text-blue-100/80 mb-1 font-normal text-sm">Becoming a doctor is a noble journey filled with dedication and challenges. Here is my advice to all future doctors:</p>
               {ADVICE_POINTS.map((item, i) => (
                 <div key={i} className={`da-card px-4 py-3 rounded-xl flex gap-3 da-hidden ${isVisible ? 'da-visible' : ''}`} style={{ transitionDelay: `${i * 150}ms` }}>
-                  <div className="text-blue-400 mt-0.5 flex-shrink-0">
+                  <div className="text-blue-400 mt-0.5 shrink-0">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                   </div>
                   <div>

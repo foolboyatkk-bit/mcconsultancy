@@ -1,6 +1,5 @@
 import  { useEffect, useRef, useState } from "react";
 
-// ─── STATIC STYLES ───
 const GLOBAL_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap');
 
@@ -8,48 +7,17 @@ const GLOBAL_STYLES = `
   @keyframes au-fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes au-slide-right { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
 
-  .au-section { 
-    font-family: 'DM Sans', sans-serif; 
-  }
-
-  .au-hidden-start {
-    opacity: 0;
-    will-change: transform, opacity;
-  }
-
-  /* Scroll-triggered animation classes */
+  .au-section { font-family: 'DM Sans', sans-serif; }
+  .au-hidden-start { opacity: 0; will-change: transform, opacity; }
   .is-visible.au-section { animation: au-fade-in 0.8s ease both; }
   .is-visible .anim-img { animation: au-slide-right 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards; animation-delay: 0.15s; }
   .is-visible .anim-text { animation: au-fade-up 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards; animation-delay: 0.3s; }
-
-  /* Premium CTA Button */
-  .au-btn {
-    background: linear-gradient(110deg, #1976d2 0%, #42a5f5 45%, #1976d2 100%);
-    background-size: 200% auto;
-    transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding: 14px 32px;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .au-btn:hover { 
-    background-position: right center; 
-    box-shadow: 0 12px 24px rgba(66,165,245,0.25); 
-    transform: translateY(-2px); 
-  }
-  .au-btn:active { transform: translateY(0); }
 `;
 
 export default function AboutUsMain() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Scroll trigger for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -73,39 +41,32 @@ export default function AboutUsMain() {
 
       <section
         ref={sectionRef}
-        className={`au-section w-full py-15 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${isVisible ? "is-visible" : ""}`}
+        className={`au-section w-full py-16 sm:py-24 px-5 sm:px-12 lg:px-16 relative overflow-hidden ${isVisible ? "is-visible" : ""}`}
         style={{
           backgroundColor: "#0a1128",
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       >
-        {/* Main Container */}
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Grid Layout: 1 column on mobile, 2 columns on large screens */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-16 items-center">
-            {/* ── Left Column: Image ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
             <div className="au-hidden-start anim-img relative">
               <div
                 className="w-full rounded-2xl overflow-hidden relative group"
                 style={{
-                  boxShadow:
-                    "0 24px 64px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2)",
+                  boxShadow: "0 24px 64px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2)",
                   border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                {/* Inner dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128]/60 via-transparent to-transparent pointer-events-none z-10" />
-
+                <div className="absolute inset-0 bg-linear-to-t from-[#0a1128]/60 via-transparent to-transparent pointer-events-none z-10" />
                 <img
-                  src="about.webp" // Replace with your actual image path
+                  src="about.webp"
                   alt="M & C Educational Consultancy Office"
                   className="w-full h-auto object-cover relative z-0 transition-transform duration-700 ease-in-out group-hover:scale-105"
                 />
               </div>
 
-              {/* Premium Floating Badge */}
               <div className="absolute -bottom-6 -right-6 md:-right-8 bg-[#0d1631]/80 backdrop-blur-md border border-white/10 p-5 rounded-2xl shadow-2xl hidden sm:block z-20">
                 <div className="flex items-center gap-4">
                   <div className="relative flex items-center justify-center">
@@ -119,9 +80,7 @@ export default function AboutUsMain() {
               </div>
             </div>
 
-            {/* ── Right Column: Text Content ── */}
             <div className="au-hidden-start anim-text flex flex-col">
-              {/* Eyebrow Tag */}
               <div style={{ marginBottom: "20px" }}>
                 <span
                   style={{
@@ -152,7 +111,6 @@ export default function AboutUsMain() {
                 </span>
               </div>
 
-              {/* Heading */}
               <h2
                 style={{
                   fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -166,8 +124,7 @@ export default function AboutUsMain() {
                 <span
                   style={{
                     color: "transparent",
-                    backgroundImage:
-                      "linear-gradient(135deg, #60a5fa, #93b4e8, #e0e7ff)",
+                    backgroundImage: "linear-gradient(135deg, #60a5fa, #93b4e8, #e0e7ff)",
                     WebkitBackgroundClip: "text",
                     backgroundClip: "text",
                   }}
@@ -176,7 +133,6 @@ export default function AboutUsMain() {
                 </span>
               </h2>
 
-              {/* Paragraphs */}
               <div
                 className="flex flex-col gap-5 mb-8"
                 style={{
@@ -190,7 +146,6 @@ export default function AboutUsMain() {
                   M & C Educational Consultancy was established in 2020 and is
                   located in Kanyakumari District, Tamil Nadu.
                 </p>
-
                 <p>
                   We are a dedicated educational consultancy and social welfare
                   center, guiding and promoting quality education for students
@@ -198,13 +153,11 @@ export default function AboutUsMain() {
                   expert guidance to students and their families at every stage
                   of their academic journey.
                 </p>
-
                 <p>
                   With over 10 years of experience, we assist students in
                   choosing top universities for MBBS (General Medicine) in
                   secured countries such as Russia and Uzbekistan.
                 </p>
-
                 <p>
                   We strongly uphold our professional ethics to support parents
                   and students in the admission process through legal and lawful

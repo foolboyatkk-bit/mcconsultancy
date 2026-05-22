@@ -54,10 +54,10 @@ const OurPartners = () => {
         <div className="relative bg-[#1a2472] rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch shadow-2xl">
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a2472] via-[#1a2472] to-[#1D4ED8] opacity-90" />
+          <div className="absolute inset-0 bg-linear-to-br from-[#1a2472] via-[#1a2472] to-[#1D4ED8] opacity-90" />
 
           {/* Ambient glow — hidden on mobile for cleaner look */}
-          <div className="hidden md:block absolute -top-32 -right-32 w-[500px] h-[500px] bg-[#60A5FA] rounded-full mix-blend-screen blur-[120px] opacity-20 pointer-events-none" />
+          <div className="hidden md:block absolute -top-32 -right-32 w-125 h-125 bg-[#60A5FA] rounded-full mix-blend-screen blur-[120px] opacity-20 pointer-events-none" />
 
           {/* Decorative globe icon */}
           <Globe2 className="absolute -bottom-16 -left-16 w-64 md:w-80 h-64 md:h-80 text-white/5 rotate-12 pointer-events-none" />
@@ -92,7 +92,7 @@ const OurPartners = () => {
             <img
               src="/Partner.png"
               alt="Medical Student"
-              className="w-auto h-full md:h-72 lg:h-96 xl:h-[420px] max-w-none object-contain object-bottom drop-shadow-2xl"
+              className="w-auto h-full md:h-72 lg:h-96 xl:h-105 max-w-none object-contain object-bottom drop-shadow-2xl"
               style={{ transform: "translateY(2px)" }}
             />
           </div>

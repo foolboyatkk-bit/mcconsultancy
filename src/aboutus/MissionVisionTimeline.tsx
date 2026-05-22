@@ -1,9 +1,7 @@
 import { useEffect, useRef } from "react";
-import mission from "../assets/about/ourvision.webp"
-import vision from "../assets/about/ourmission.webp"
-import values from "../assets/about/ourmission.webp"
-
-// ─── STATIC DATA ───
+import mission from "../assets/about/ourvision.webp";
+import vision from "../assets/about/ourmission.webp";
+import values from "../assets/about/values.webp";
 
 const TIMELINE_DATA = [
   {
@@ -77,18 +75,10 @@ const TIMELINE_DATA = [
   },
 ];
 
-// ─── STYLES ───
-
 const GLOBAL_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
 
-  .mvv-section {
-    font-family: 'DM Sans', sans-serif;
-    background-color: #f4f7fd;
-    overflow: hidden;
-  }
-
-  /* ── Scroll animation ── */
+  .mvv-section { font-family: 'DM Sans', sans-serif; background-color: #f4f7fd; }
   .mvv-panel { opacity: 0; transform: translateY(48px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
   .mvv-panel.mvv-in { opacity: 1; transform: translateY(0); }
 
@@ -97,105 +87,44 @@ const GLOBAL_STYLES = `
   .mvv-panel:nth-child(even) .mvv-img-wrap { transform: translateX(-40px); }
   .mvv-panel.mvv-in:nth-child(even) .mvv-img-wrap { transform: translateX(0); }
 
-  /* ── Card shell ── */
   .mvv-card {
-    background: #ffffff;
-    border: 1px solid rgba(26,58,143,0.1);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    background: #ffffff; border: 1px solid rgba(26,58,143,0.1); border-radius: 20px;
+    position: relative; overflow: hidden; transition: box-shadow 0.4s ease, border-color 0.4s ease;
   }
-  .mvv-card:hover {
-    border-color: rgba(26,58,143,0.22);
-    box-shadow: 0 24px 60px -12px rgba(26,58,143,0.13);
-  }
-
-  /* Bottom shimmer line */
+  .mvv-card:hover { border-color: rgba(26,58,143,0.22); box-shadow: 0 24px 60px -12px rgba(26,58,143,0.13); }
   .mvv-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, #1a3a8f, #42a5f5, #1a3a8f);
-    background-size: 200% 100%;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.45s ease;
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, #1a3a8f, #42a5f5, #1a3a8f); background-size: 200% 100%;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.45s ease;
   }
-  .mvv-card:hover::after {
-    transform: scaleX(1);
-    animation: mvv-shimmer 2s linear infinite;
-  }
-  @keyframes mvv-shimmer {
-    0% { background-position: 100% 0; }
-    100% { background-position: -100% 0; }
-  }
+  .mvv-card:hover::after { transform: scaleX(1); animation: mvv-shimmer 2s linear infinite; }
+  @keyframes mvv-shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
-  /* Left accent bar */
   .mvv-accent-bar {
-    position: absolute;
-    left: 0; top: 10%; bottom: 10%;
-    width: 4px;
-    border-radius: 0 4px 4px 0;
-    background: linear-gradient(180deg, #1a3a8f 0%, #42a5f5 100%);
+    position: absolute; left: 0; top: 10%; bottom: 10%; width: 4px;
+    border-radius: 0 4px 4px 0; background: linear-gradient(180deg, #1a3a8f 0%, #42a5f5 100%);
   }
-
-  /* Big ghost number */
   .mvv-ghost-num {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 800;
-    font-size: clamp(80px, 12vw, 140px);
-    line-height: 1;
-    background: linear-gradient(135deg, rgba(26,58,143,0.07) 0%, rgba(66,165,250,0.04) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    position: absolute;
-    right: -10px; bottom: -10px;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
+    font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: clamp(60px, 10vw, 120px);
+    line-height: 1; background: linear-gradient(135deg, rgba(26,58,143,0.07) 0%, rgba(66,165,250,0.04) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    position: absolute; right: -10px; bottom: -10px; pointer-events: none; user-select: none; z-index: 0;
   }
-
-  /* Icon badge */
   .mvv-icon-badge {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #1a3a8f 0%, #1976d2 100%);
-    display: flex; align-items: center; justify-content: center;
-    color: #fff;
-    flex-shrink: 0;
-    box-shadow: 0 6px 16px rgba(26,58,143,0.25);
-    transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+    width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #1a3a8f 0%, #1976d2 100%);
+    display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(26,58,143,0.25); transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
   }
-  .mvv-card:hover .mvv-icon-badge {
-    transform: scale(1.12) rotate(-6deg);
-  }
-
-  /* Pill label */
+  .mvv-card:hover .mvv-icon-badge { transform: scale(1.12) rotate(-6deg); }
   .mvv-pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.67rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: #1976d2;
-    background: #eef3fd;
-    border: 1px solid #c7d8f5;
-    padding: 5px 13px;
-    border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 6px; font-size: 0.67rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #1976d2; background: #eef3fd;
+    border: 1px solid #c7d8f5; padding: 5px 13px; border-radius: 100px;
   }
-
-  /* Image panel */
   .mvv-img-panel {
-    background: linear-gradient(135deg, #eef3fd 0%, #f4f7fd 100%);
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    min-height: 240px;
+    background: linear-gradient(135deg, #eef3fd 0%, #f4f7fd 100%); border-radius: 14px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; padding: 24px; min-height: 200px;
   }
-
-  /* Responsive grid */
   @media (max-width: 768px) {
     .mvv-inner-grid { flex-direction: column !important; }
     .mvv-img-panel { min-height: 180px; }
@@ -228,14 +157,13 @@ export default function MissionVisionTimeline() {
       <style>{GLOBAL_STYLES}</style>
 
       <section
-        className="mvv-section w-full py-20 px-4 sm:px-6 lg:px-8"
+        className="mvv-section w-full py-16 sm:py-24 px-5 sm:px-12 lg:px-16 relative overflow-hidden"
         style={{
           backgroundImage:
             "radial-gradient(circle, rgba(26,58,143,0.06) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       >
-        {/* ── Ambient glows ── */}
         <div
           style={{
             position: "absolute",
@@ -271,7 +199,6 @@ export default function MissionVisionTimeline() {
             zIndex: 1,
           }}
         >
-          {/* ── Section header ── */}
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <span
               className="mvv-pill"
@@ -313,7 +240,6 @@ export default function MissionVisionTimeline() {
             </h2>
           </div>
 
-          {/* ── Panels ── */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "28px" }}
           >
@@ -325,19 +251,12 @@ export default function MissionVisionTimeline() {
                   ref={(el) => {
                     panelRefs.current[index] = el;
                   }}
-                  className="mvv-panel mvv-card"
-                  style={{
-                    transitionDelay: `${index * 80}ms`,
-                    padding: "32px 36px 32px 44px",
-                  }}
+                  className="mvv-panel mvv-card p-7 pl-10 sm:p-10 sm:pl-12"
+                  style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  {/* Left accent bar */}
                   <div className="mvv-accent-bar" />
-
-                  {/* Ghost number */}
                   <div className="mvv-ghost-num">0{index + 1}</div>
 
-                  {/* Inner flex */}
                   <div
                     className="mvv-inner-grid"
                     style={{
@@ -349,9 +268,7 @@ export default function MissionVisionTimeline() {
                       zIndex: 1,
                     }}
                   >
-                    {/* Text side */}
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      {/* Top row: pill + icon */}
                       <div
                         style={{
                           display: "flex",
@@ -391,7 +308,6 @@ export default function MissionVisionTimeline() {
                         {item.description}
                       </p>
 
-                      {/* Decorative line dots */}
                       <div
                         style={{
                           display: "flex",
@@ -417,14 +333,7 @@ export default function MissionVisionTimeline() {
                       </div>
                     </div>
 
-                    {/* Image side */}
-                    <div
-                      className="mvv-img-wrap"
-                      style={{
-                        flexShrink: 0,
-                        width: "clamp(180px, 30%, 300px)",
-                      }}
-                    >
+                    <div className="mvv-img-wrap w-full max-w-60 sm:max-w-70 lg:max-w-75 shrink-0 mx-auto lg:mx-0">
                       <div className="mvv-img-panel">
                         <img
                           src={item.imageSrc}

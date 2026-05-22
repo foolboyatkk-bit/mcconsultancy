@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-// ─── STATIC STYLES ───
 const GLOBAL_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
@@ -13,20 +12,17 @@ const GLOBAL_STYLES = `
   .cert-img-wrapper { cursor: pointer; transition: transform 0.3s ease; }
   .cert-img-wrapper:hover { transform: scale(1.02); }
 
-  /* Lightbox Overlay */
   .lightbox-overlay {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 1000;
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.9); display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 20px;
   }
 `;
 
 const Certificates = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +43,6 @@ const Certificates = () => {
     <>
       <style>{GLOBAL_STYLES}</style>
 
-      {/* Lightbox Modal */}
       {selectedImage && (
         <div
           className="lightbox-overlay"
@@ -66,7 +61,7 @@ const Certificates = () => {
 
       <section
         ref={ref}
-        className={`cert-section w-full py-20 px-4 relative overflow-hidden ${isVisible ? "cert-visible" : ""}`}
+        className={`cert-section w-full py-16 sm:py-24 px-5 sm:px-12 relative overflow-hidden ${isVisible ? "cert-visible" : ""}`}
         style={{
           backgroundColor: "#f4f7fd",
           backgroundImage:
@@ -90,7 +85,7 @@ const Certificates = () => {
                 Accreditations
               </span>
             </h2>
-            <p className="max-w-6xl mx-auto text-gray-600">
+            <p className="max-w-6xl mx-auto text-gray-600 px-2 sm:px-0">
               M & C Educational Consultancy is a government-recognized and
               officially registered MSME (Micro, Small & Medium Enterprise)
               under the Ministry of Micro, Small and Medium Enterprises, India.
@@ -102,7 +97,6 @@ const Certificates = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              {/* Image 1 */}
               <div className="cert-hidden anim flex justify-center">
                 <div
                   className="cert-img-wrapper"
@@ -111,12 +105,11 @@ const Certificates = () => {
                   <img
                     src="certificate1.svg"
                     alt="Certificate 1"
-                    className="w-full max-w-100 shadow-xl rounded-lg"
+                    className="w-full max-w-85 sm:max-w-100 shadow-xl rounded-lg"
                   />
                 </div>
               </div>
 
-              {/* Image 2 */}
               <div className="cert-hidden anim flex justify-center">
                 <div
                   className="cert-img-wrapper"
@@ -125,7 +118,7 @@ const Certificates = () => {
                   <img
                     src="certificate2.svg"
                     alt="Certificate 2"
-                    className="w-full max-w-100 shadow-xl rounded-lg"
+                    className="w-full max-w-85 sm:max-w-100 shadow-xl rounded-lg"
                   />
                 </div>
               </div>
