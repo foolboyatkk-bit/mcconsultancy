@@ -12,10 +12,10 @@ interface ScrollRevealResult {
 const images: ImageItem[] = [
   { src: "/mc1.webp" },
   { src: "/mc3.webp" },
-  { src: "/mc4.webp"},
-  { src: "/mc5.webp"},
-  { src: "/mc6.webp"},
-  { src: "/mc7.webp"},
+  { src: "/mc4.webp" },
+  { src: "/mc5.webp" },
+  { src: "/mc6.webp" },
+  { src: "/mc7.webp" },
   { src: "/mc8.webp" },
 ];
 
@@ -42,7 +42,6 @@ const STYLES = `
     filter: saturate(1.08) brightness(1.02);
   }
 
-  /* bottom vignette */
   .gal-tile-vignette {
     position: absolute; inset: 0; z-index: 2; pointer-events: none;
     background: linear-gradient(
@@ -57,7 +56,6 @@ const STYLES = `
   }
   .gal-tile:hover .gal-tile-vignette { opacity: 1; }
 
-  /* ghost index number */
   .gal-num {
     position: absolute; z-index: 1; pointer-events: none; user-select: none;
     font-family: 'Cormorant Garamond', serif;
@@ -67,7 +65,6 @@ const STYLES = `
   }
   .gal-tile:hover .gal-num { -webkit-text-stroke: 1px rgba(147,180,232,0.22); }
 
-  /* meta label */
   .gal-meta {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 16px 18px; z-index: 3;
@@ -76,23 +73,6 @@ const STYLES = `
   }
   .gal-tile:hover .gal-meta { transform: translateY(0); }
 
-  .gal-meta-eyebrow {
-    display: block;
-    font-size: 0.6rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(147,180,232,0.55);
-    margin-bottom: 3px;
-    opacity: 0;
-    transition: opacity 0.3s ease 0.08s;
-  }
-  .gal-tile:hover .gal-meta-eyebrow { opacity: 1; }
-
-  .gal-meta-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-weight: 400; font-style: italic;
-    color: rgba(219,233,255,0.92); line-height: 1.2;
-  }
-
   .gal-meta-rule {
     width: 0; height: 1px; margin-bottom: 8px;
     background: linear-gradient(90deg, #60a5fa, transparent);
@@ -100,7 +80,6 @@ const STYLES = `
   }
   .gal-tile:hover .gal-meta-rule { width: 22px; }
 
-  /* expand icon */
   .gal-expand {
     position: absolute; top: 12px; right: 12px; z-index: 3;
     width: 28px; height: 28px; border-radius: 50%;
@@ -113,7 +92,6 @@ const STYLES = `
   }
   .gal-tile:hover .gal-expand { opacity: 1; transform: scale(1) rotate(0deg); }
 
-  /* thin border frame that appears on hover */
   .gal-tile::after {
     content: '';
     position: absolute; inset: 0; z-index: 4;
@@ -124,15 +102,78 @@ const STYLES = `
   }
   .gal-tile:hover::after { border-color: rgba(147,180,232,0.16); }
 
+  /* ── Grid layouts ── */
+
+  /* Mobile: single column stack */
+  .gal-grid-main {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 220px 180px 180px 180px 180px;
+  }
+
+  .gal-grid-main .gal-feature {
+    grid-row: auto;
+  }
+
+  .gal-grid-bottom {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px 180px;
+  }
+
+  /* Tablet: 2-column layout */
+  @media (min-width: 640px) {
+    .gal-grid-main {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 200px 200px;
+    }
+    .gal-grid-main .gal-feature {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+    }
+    .gal-grid-bottom {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px;
+    }
+  }
+
+  /* Desktop: original asymmetric 3-column layout */
+  @media (min-width: 1024px) {
+    .gal-grid-main {
+      grid-template-columns: 1.55fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+    }
+    .gal-grid-main .gal-feature {
+      grid-column: auto;
+      grid-row: 1 / 3;
+    }
+    .gal-grid-bottom {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 215px;
+    }
+  }
+
   /* ── Lightbox ── */
   .lb-bg {
     position: fixed; inset: 0; z-index: 9999;
     background: rgba(4,8,22,0.97);
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    padding: 24px 80px;
+    padding: 60px 16px 24px;
     animation: lb-in 0.3s ease both;
   }
+
+  @media (min-width: 640px) {
+    .lb-bg { padding: 24px 72px; }
+  }
+
+  @media (min-width: 1024px) {
+    .lb-bg { padding: 24px 80px; }
+  }
+
   @keyframes lb-in { from { opacity:0 } to { opacity:1 } }
 
   .lb-body {
@@ -145,13 +186,16 @@ const STYLES = `
   }
 
   .lb-body > img {
-    width: 100%; max-height: 68vh;
+    width: 100%; max-height: 60vh;
     object-fit: contain; display: block;
     border-radius: 4px;
     border: 1px solid rgba(147,180,232,0.1);
   }
 
-  /* top-right close */
+  @media (min-width: 640px) {
+    .lb-body > img { max-height: 68vh; }
+  }
+
   .lb-close {
     position: absolute; top: -44px; right: 0;
     width: 32px; height: 32px; border-radius: 50%;
@@ -163,53 +207,55 @@ const STYLES = `
   }
   .lb-close:hover { background: rgba(26,58,143,0.55); color:#fff; border-color:rgba(147,180,232,0.4); }
 
-  /* side navs */
+  /* Mobile: close button sits above image, navs below */
   .lb-nav {
     position: absolute; top: 50%; transform: translateY(-50%);
-    width: 42px; height: 42px; border-radius: 50%;
+    width: 34px; height: 34px; border-radius: 50%;
     border: 1px solid rgba(147,180,232,0.18);
     background: rgba(255,255,255,0.03);
     display: flex; align-items: center; justify-content: center;
-    color: rgba(219,233,255,0.6); font-size: 22px; cursor: pointer;
+    color: rgba(219,233,255,0.6); font-size: 18px; cursor: pointer;
     transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
   .lb-nav:hover { background: rgba(26,58,143,0.55); border-color:rgba(147,180,232,0.42); color:#fff; }
-  .lb-prev { right: calc(100% + 16px); }
-  .lb-next { left: calc(100% + 16px); }
+  .lb-prev { right: calc(100% + 6px); }
+  .lb-next { left: calc(100% + 6px); }
 
-  /* caption bar */
+  @media (min-width: 640px) {
+    .lb-nav { width: 42px; height: 42px; font-size: 22px; }
+    .lb-prev { right: calc(100% + 16px); }
+    .lb-next { left: calc(100% + 16px); }
+  }
+
   .lb-caption {
     display: flex; align-items: center; gap: 12px;
     margin-top: 16px;
   }
 
-  /* filmstrip */
-  .lb-strip {
-    display: flex; gap: 7px; margin-top: 12px;
-    width: 100%; overflow-x: auto; padding-bottom: 2px;
-    scrollbar-width: none;
+  /* ── Header responsive ── */
+  .gal-header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px 40px;
   }
-  .lb-strip::-webkit-scrollbar { display: none; }
 
-  .lb-thumb {
-    flex-shrink: 0; width: 56px; height: 38px; border-radius: 3px;
-    overflow: hidden; cursor: pointer; opacity: 0.38;
-    border: 1.5px solid transparent;
-    transition: opacity 0.2s, border-color 0.2s;
+  .gal-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(219,233,255,0.42);
+    line-height: 1.8;
+    max-width: 290px;
+    padding-bottom: 7px;
   }
-  .lb-thumb.on { opacity: 1; border-color: #1976d2; }
-  .lb-thumb:not(.on):hover { opacity: 0.72; }
-  .lb-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 
-  @media (max-width: 640px) {
-    .lb-bg { padding: 16px; }
-    .lb-nav { width:34px; height:34px; font-size:18px; }
-    .lb-prev { right: calc(100% + 6px); }
-    .lb-next { left: calc(100% + 6px); }
+  @media (max-width: 639px) {
+    .gal-subtitle { max-width: 100%; }
   }
 `;
 
-/* ─── hook ──────────────────────────────────────────────────────────── */
+/* ─── hook ── */
 function useScrollReveal(threshold = 0.1): ScrollRevealResult {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -217,7 +263,9 @@ function useScrollReveal(threshold = 0.1): ScrollRevealResult {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); io.unobserve(el); } },
+      ([e]) => {
+        if (e.isIntersecting) { setVisible(true); io.unobserve(el); }
+      },
       { threshold },
     );
     io.observe(el);
@@ -226,7 +274,7 @@ function useScrollReveal(threshold = 0.1): ScrollRevealResult {
   return { ref, visible };
 }
 
-/* ─── Tile ───────────────────────────────────────────────────────────── */
+/* ─── Tile ── */
 function Tile({
   image, index, visible, delay, onOpen, numSize, numPos,
 }: {
@@ -244,21 +292,17 @@ function Tile({
       }}
       onClick={onOpen}
     >
-      {/* ghost number */}
       <div className="gal-num" style={{ fontSize: `${numSize}px`, ...numPos }}>
         {String(index + 1).padStart(2, "0")}
       </div>
 
-      <img src={image.src}  loading="lazy" />
+      <img src={image.src} alt={`Gallery image ${index + 1}`} loading="lazy" />
       <div className="gal-tile-vignette" />
 
-      {/* meta */}
       <div className="gal-meta">
         <div className="gal-meta-rule" />
-   
       </div>
 
-      {/* expand icon */}
       <div className="gal-expand" aria-hidden="true">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -269,7 +313,7 @@ function Tile({
   );
 }
 
-/* ─── Lightbox ───────────────────────────────────────────────────────── */
+/* ─── Lightbox ── */
 function Lightbox({
   images, activeIndex, onClose, onNav,
 }: {
@@ -289,12 +333,10 @@ function Lightbox({
   return (
     <div className="lb-bg" onClick={onClose}>
       <div className="lb-body" onClick={(e) => e.stopPropagation()}>
-
         <button className="lb-close" aria-label="Close" onClick={onClose}>✕</button>
 
-        <img src={images[activeIndex].src}  />
+        <img src={images[activeIndex].src} alt={`Gallery image ${activeIndex + 1}`} />
 
-        {/* caption */}
         <div className="lb-caption">
           <span style={{
             fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic",
@@ -304,20 +346,16 @@ function Lightbox({
             {String(images.length).padStart(2, "0")}
           </span>
           <div style={{ flex: 1, height: "1px", background: "rgba(147,180,232,0.08)" }} />
-         
         </div>
 
-        {/* filmstrip */}
-       
-
         <button className="lb-nav lb-prev" aria-label="Previous" onClick={() => onNav(-1)}>‹</button>
-        <button className="lb-nav lb-next" aria-label="Next"     onClick={() => onNav(1)}>›</button>
+        <button className="lb-nav lb-next" aria-label="Next" onClick={() => onNav(1)}>›</button>
       </div>
     </div>
   );
 }
 
-/* ─── Main ───────────────────────────────────────────────────────────── */
+/* ─── Main ── */
 export default function AboutUsGallery() {
   const { ref, visible } = useScrollReveal();
   const [lbIndex, setLbIndex] = useState<number | null>(null);
@@ -357,7 +395,7 @@ export default function AboutUsGallery() {
 
         <div style={{
           maxWidth: "1280px", margin: "0 auto",
-          padding: "88px 32px 100px",
+          padding: "64px 20px 80px",
           position: "relative",
         }}>
 
@@ -365,14 +403,14 @@ export default function AboutUsGallery() {
           <div
             ref={ref}
             style={{
-              marginBottom: "64px",
+              marginBottom: "48px",
               transition: "opacity 0.9s ease, transform 0.9s ease",
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(28px)",
             }}
           >
             {/* eyebrow row */}
-            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "32px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "28px" }}>
               <div style={{ width: "36px", height: "1px", background: "rgba(147,180,232,0.35)", flexShrink: 0 }} />
               <span style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -392,14 +430,11 @@ export default function AboutUsGallery() {
               </span>
             </div>
 
-            {/* headline row — heading left, subtitle right, baseline-aligned */}
-            <div style={{
-              display: "flex", flexWrap: "wrap",
-              alignItems: "flex-end", gap: "12px 40px",
-            }}>
+            {/* headline row */}
+            <div className="gal-header-inner">
               <h2 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+                fontSize: "clamp(2rem, 6vw, 3.8rem)",
                 fontWeight: 300, lineHeight: 1.1,
                 color: "#ffffff", letterSpacing: "-0.01em",
               }}>
@@ -413,12 +448,7 @@ export default function AboutUsGallery() {
                 </em>
               </h2>
 
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "0.88rem", fontWeight: 300,
-                color: "rgba(219,233,255,0.42)", lineHeight: 1.8,
-                maxWidth: "290px", paddingBottom: "7px",
-              }}>
+              <p className="gal-subtitle">
                 Built to welcome you with warmth, professionalism, and care.
               </p>
             </div>
@@ -426,16 +456,9 @@ export default function AboutUsGallery() {
 
           {/* ══ GRID ══ */}
 
-          {/* Row 1 — feature (tall 2-row) + 2×2 cluster */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1.55fr 1fr 1fr",
-            gridTemplateRows: "260px 260px",
-            gap: "10px",
-            marginBottom: "10px",
-          }}>
-            {/* Feature tile spans both rows */}
-            <div style={{ gridRow: "1 / 3" }}>
+          {/* Main grid: feature + 2×2 cluster */}
+          <div className="gal-grid-main">
+            <div className="gal-feature">
               <Tile image={images[0]} index={0} visible={visible} delay={0}
                 onOpen={() => handleOpen(0)} numSize={144} numPos={{ top: "-18px", left: "10px" }} />
             </div>
@@ -450,13 +473,8 @@ export default function AboutUsGallery() {
               onOpen={() => handleOpen(4)} numSize={86} numPos={{ top: "-8px", right: "8px" }} />
           </div>
 
-          {/* Row 2 — two wide panoramic tiles */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "215px",
-            gap: "10px",
-          }}>
+          {/* Bottom panoramic row */}
+          <div className="gal-grid-bottom">
             <Tile image={images[5]} index={5} visible={visible} delay={340}
               onOpen={() => handleOpen(5)} numSize={108} numPos={{ bottom: "-6px", left: "10px" }} />
             <Tile image={images[6]} index={6} visible={visible} delay={410}
@@ -466,7 +484,7 @@ export default function AboutUsGallery() {
           {/* ══ FOOTER HINT ══ */}
           <div style={{
             display: "flex", alignItems: "center", gap: "14px",
-            marginTop: "36px",
+            marginTop: "32px",
             transition: `opacity 0.8s ease ${images.length * 65 + 320}ms`,
             opacity: visible ? 1 : 0,
           }}>
