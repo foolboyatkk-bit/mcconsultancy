@@ -1,7 +1,6 @@
 "use client";
 
 import { Mail, Phone, ArrowRight, MapPin } from "lucide-react";
-import intro from "../assets/introImg.webp";
 
 const STATS = [
   { value: "10+",  label: "Years of Experience" },
@@ -62,11 +61,11 @@ const IntroductionSection = () => {
             }}
           >
             <img
-              src={intro}
+              src="/mc2.webp"
               alt="M&C Educational Consultancy"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/20 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#0f172a]/90 via-[#0f172a]/20 to-transparent" />
 
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 flex items-end justify-between gap-3 flex-wrap">
               <div>

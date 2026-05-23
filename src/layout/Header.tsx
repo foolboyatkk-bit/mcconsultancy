@@ -80,7 +80,7 @@ export default function Header() {
             onClick={() => window.scrollTo(0, 0)}
             className="shrink-0 leading-none opacity-100 transition-opacity duration-200 hover:opacity-75"
           >
-            <img src="/logo.webp" alt="M&C Educational Consultancy" className="h-17.5 w-auto object-contain block" />
+            <img src="/logo.webp" alt="M&C Educational Consultancy" className="h-16 w-auto object-contain block" />
           </NavLink>
 
           {/* Desktop nav */}
