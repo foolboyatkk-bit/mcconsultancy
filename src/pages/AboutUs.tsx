@@ -4,12 +4,14 @@ import MissionVisionTimeline from '../aboutus/MissionVisionTimeline'
 import FounderSection from '../aboutus/FounderSection'
 import CertificatesAccreditations from '../aboutus/CertificatesAccreditations'
 import WhyChooseUs from '../aboutus/WhyChooseUs'
+import AboutUsGallery from '../aboutus/AboutUsGallery'
 
 function AboutUs() {
   return (
     <main className="w-full max-w-[100vw] overflow-x-hidden flex flex-col">
         <EmpoweringHero/>
         <AboutUsMain/>
+        <AboutUsGallery/>
         <MissionVisionTimeline/>
         <FounderSection/>
         <CertificatesAccreditations/>
