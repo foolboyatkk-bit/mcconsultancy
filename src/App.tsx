@@ -8,9 +8,9 @@ import Achivements from "./pages/Achivements";
 import AboutUs from "./pages/AboutUs";
 import Stavropol from "./pages/countries/russia/Stavropol";
 import Volgograd from "./pages/countries/russia/Volgograd";
-import NorthWestern from "./pages/countries/russia/NorthWestern";
 import Bukhara from "./pages/countries/uzbekistan/Bukhara";
-import TashkentTPMI from "./pages/countries/uzbekistan/TashkentTPMI";
+import IIMechniKov from "./pages/countries/russia/IIMechniKov";
+import Asia from "./pages/countries/uzbekistan/Asia";
 
 const router = createBrowserRouter([
   {
@@ -39,12 +39,12 @@ const router = createBrowserRouter([
       },
       { path: "/countries/russia/stavropol", element: <Stavropol /> },
       { path: "/countries/russia/volgograd", element: <Volgograd /> },
-      { path: "/countries/russia/north-western", element: <NorthWestern /> },
+      { path: "/countries/russia/north-western", element: <IIMechniKov /> },
 
       { path: "/countries/uzbekistan/bukhara", element: <Bukhara /> },
       {
-        path: "/countries/uzbekistan/tashkent-tpmi",
-        element: <TashkentTPMI />,
+        path: "/countries/uzbekistan/asia",
+        element: <Asia />,
       },
     ],
   },

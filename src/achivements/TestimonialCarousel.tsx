@@ -23,14 +23,14 @@ const TESTIMONIALS = [
       "From choosing my university to settling in Russia, M & C supported me like a family. Thanks to them, I am confident in my future.",
   },
   {
-    name: "Dr. Monick",
+    name: "Dr. Monicka",
     location: "Russia",
     initials: "MO",
     quote:
       "M & C made my MBBS journey smooth from admission to settling in Russia. They are always clear and reliable. I strongly recommend them to every aspiring doctor.",
   },
   {
-    name: "Dr. Kamal",
+    name: "Dr. Raj Kamal",
     location: "Russia",
     initials: "KA",
     quote:

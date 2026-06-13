@@ -16,26 +16,41 @@ const COUNTRIES_DATA = [
     name: "Russia",
     slug: "russia",
     universities: [
-      { name: "Stavropol State Medical University",    to: "/countries/russia/stavropol" },
-      { name: "Volgograd State Medical University",    to: "/countries/russia/volgograd" },
-      { name: "North-Western State Medical University",to: "/countries/russia/north-western" },
+      {
+        name: "Stavropol State Medical University",
+        to: "/countries/russia/stavropol",
+      },
+      {
+        name: "Volgograd State Medical University",
+        to: "/countries/russia/volgograd",
+      },
+      {
+        name: "North-Western State Medical University Named after I.I. Mechni Kov",
+        to: "/countries/russia/north-western",
+      },
     ],
   },
   {
     name: "Uzbekistan",
     slug: "uzbekistan",
     universities: [
-      { name: "Bukhara State Medical University",                    to: "/countries/uzbekistan/bukhara" },
-      { name: "Tashkent State Medical University (TPMI Campus)",     to: "/countries/uzbekistan/tashkent-tpmi" },
+      {
+        name: "Bukhara State Medical University",
+        to: "/countries/uzbekistan/bukhara",
+      },
+      {
+        name: "Asia International Universiyty",
+        to: "/countries/uzbekistan/asia"
+      }
     ],
   },
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen]               = useState(false);
-  const [scrolled, setScrolled]                   = useState(false);
-  const [dropdownOpen, setDropdownOpen]           = useState(false);
-  const [activeCountry, setActiveCountry]         = useState(COUNTRIES_DATA[0].slug);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeCountry, setActiveCountry] = useState(COUNTRIES_DATA[0].slug);
   // ← NEW: controls the mobile Countries accordion
   const [mobileCountriesOpen, setMobileCountriesOpen] = useState(false);
   const closeTimer = useRef<number | undefined>(undefined);
@@ -51,13 +66,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleMouseEnter = () => { clearTimeout(closeTimer.current); setDropdownOpen(true); };
-  const handleMouseLeave = () => { closeTimer.current = setTimeout(() => setDropdownOpen(false), 120); };
+  const handleMouseEnter = () => {
+    clearTimeout(closeTimer.current);
+    setDropdownOpen(true);
+  };
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setDropdownOpen(false), 120);
+  };
 
   const activeData = COUNTRIES_DATA.find((c) => c.slug === activeCountry);
 
   // total sub-link count for accordion height budget
-  const totalUnis = COUNTRIES_DATA.reduce((s, c) => s + c.universities.length, 0);
+  const totalUnis = COUNTRIES_DATA.reduce(
+    (s, c) => s + c.universities.length,
+    0,
+  );
 
   return (
     <header
@@ -73,14 +96,17 @@ export default function Header() {
       {/* Nav bar */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 py-2.5">
         <div className="flex justify-between items-center h-17">
-
           {/* Logo */}
           <NavLink
             to="/"
             onClick={() => window.scrollTo(0, 0)}
             className="shrink-0 leading-none opacity-100 transition-opacity duration-200 hover:opacity-75"
           >
-            <img src="/logo.webp" alt="M&C Educational Consultancy" className="h-17.5 w-auto object-contain block" />
+            <img
+              src="/logo.webp"
+              alt="M&C Educational Consultancy"
+              className="h-17.5 w-auto object-contain block"
+            />
           </NavLink>
 
           {/* Desktop nav */}
@@ -88,10 +114,17 @@ export default function Header() {
             {NAV_LINKS.map(({ to, label }) => {
               if (label === "Countries") {
                 return (
-                  <div key={to} className="relative flex items-center" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                  <div
+                    key={to}
+                    className="relative flex items-center"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <button
                       className={`relative pb-0.75 text-sm font-semibold uppercase tracking-[0.09em] transition-colors duration-250 cursor-pointer hover:text-[#1a3a8f] text-[#374151] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-linear-to-r after:from-[#1a3a8f] after:via-[#1976d2] after:to-[#1a3a8f] after:rounded-xs after:transition-[width] after:duration-380 ${
-                        dropdownOpen ? "text-[#1a3a8f] after:w-full" : "after:w-0"
+                        dropdownOpen
+                          ? "text-[#1a3a8f] after:w-full"
+                          : "after:w-0"
                       }`}
                     >
                       {label}
@@ -128,7 +161,10 @@ export default function Header() {
                           <NavLink
                             key={uni.to}
                             to={uni.to}
-                            onClick={() => { setDropdownOpen(false); window.scrollTo(0, 0); }}
+                            onClick={() => {
+                              setDropdownOpen(false);
+                              window.scrollTo(0, 0);
+                            }}
                             className="block px-4 py-3.25 text-[0.83rem] font-semibold text-[#1a1a2e] rounded-sm hover:bg-[#eef3fd] hover:text-[#1a3a8f] transition-colors duration-150 leading-snug"
                           >
                             {uni.name}
@@ -148,7 +184,9 @@ export default function Header() {
                   onClick={() => window.scrollTo(0, 0)}
                   className={({ isActive }) =>
                     `relative pb-0.75 text-sm font-semibold uppercase tracking-[0.09em] transition-colors duration-250 hover:text-[#1a3a8f] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-linear-to-r after:from-[#1a3a8f] after:via-[#1976d2] after:to-[#1a3a8f] after:rounded-xs after:transition-[width] after:duration-380 hover:after:w-full ${
-                      isActive ? "text-[#1a3a8f] after:w-full" : "text-[#374151] after:w-0"
+                      isActive
+                        ? "text-[#1a3a8f] after:w-full"
+                        : "text-[#374151] after:w-0"
                     }`
                   }
                 >
@@ -169,9 +207,11 @@ export default function Header() {
                 key={i}
                 className={`block w-5.25 h-[1.5px] bg-[#1a3a8f] rounded-xs origin-center transition-all duration-300 ease-in-out ${
                   mobileOpen
-                    ? i === 0 ? "rotate-45 translate-x-[5.5px] translate-y-[5.5px]"
-                      : i === 2 ? "-rotate-45 translate-x-[5.5px] translate-y-[-5.5px]"
-                      : "scale-x-0 opacity-0"
+                    ? i === 0
+                      ? "rotate-45 translate-x-[5.5px] translate-y-[5.5px]"
+                      : i === 2
+                        ? "-rotate-45 translate-x-[5.5px] translate-y-[-5.5px]"
+                        : "scale-x-0 opacity-0"
                     : "opacity-100"
                 }`}
               />
@@ -196,7 +236,9 @@ export default function Header() {
                     onClick={() => setMobileCountriesOpen((v) => !v)}
                     style={{ transitionDelay: `${i * 35}ms` }}
                     className={`w-full flex items-center justify-between text-[0.75rem] uppercase tracking-[0.09em] py-3.25 px-4 rounded-sm border-l-2 font-normal transition-all duration-300 transform ${
-                      mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"
+                      mobileOpen
+                        ? "translate-x-0 opacity-100"
+                        : "-translate-x-3 opacity-0"
                     } ${
                       mobileCountriesOpen
                         ? "text-[#1a3a8f] bg-[#eef3fd] border-[#1976d2]"
@@ -207,11 +249,20 @@ export default function Header() {
                     {/* Chevron rotates when open */}
                     <svg
                       className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                        mobileCountriesOpen ? "rotate-180 text-[#1a3a8f]" : "text-[#9ca3af]"
+                        mobileCountriesOpen
+                          ? "rotate-180 text-[#1a3a8f]"
+                          : "text-[#9ca3af]"
                       }`}
-                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
 
@@ -234,7 +285,10 @@ export default function Header() {
                           <NavLink
                             key={uni.to}
                             to={uni.to}
-                            onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              window.scrollTo(0, 0);
+                            }}
                             className="block text-[0.73rem] text-[#374151] py-2.25 px-4 rounded-sm hover:text-[#1a3a8f] hover:bg-[#eef3fd] border-l-2 border-[#dbe8f8] transition-colors"
                           >
                             {uni.name}
@@ -252,11 +306,16 @@ export default function Header() {
                 key={to}
                 to={to}
                 end={to === "/"}
-                onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
+                onClick={() => {
+                  setMobileOpen(false);
+                  window.scrollTo(0, 0);
+                }}
                 style={{ transitionDelay: `${i * 35}ms` }}
                 className={({ isActive }) =>
                   `block text-[0.75rem] uppercase tracking-[0.09em] py-3.25 px-4 rounded-sm border-l-2 transition-all duration-300 transform ${
-                    mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"
+                    mobileOpen
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-3 opacity-0"
                   } ${
                     isActive
                       ? "font-medium text-[#1a3a8f] bg-[#eef3fd] border-[#1976d2]"
@@ -273,10 +332,15 @@ export default function Header() {
 
           <NavLink
             to="/contact"
-            onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
+            onClick={() => {
+              setMobileOpen(false);
+              window.scrollTo(0, 0);
+            }}
             style={{ transitionDelay: `${NAV_LINKS.length * 35}ms` }}
             className={`block text-center text-[0.72rem] font-medium uppercase tracking-[0.11em] text-white py-3.25 px-5 mx-4 mt-1 mb-1.5 rounded-xs bg-[linear-gradient(110deg,#1a3a8f_0%,#1565c0_40%,#1976d2_50%,#1565c0_65%,#1a3a8f_100%)] bg-size-[220%_auto] transition-all duration-500 ease-out hover:bg-right hover:shadow-[0_6px_24px_rgba(26,58,143,0.28)] hover:-translate-y-px active:translate-y-0 transform ${
-              mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0"
+              mobileOpen
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-3 opacity-0"
             }`}
           >
             Enquire Now

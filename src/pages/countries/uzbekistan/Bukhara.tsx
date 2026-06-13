@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import hero from "../../../assets/countries/bukhara/hero.jpeg"
 
 // ── STATIC DATA ──────────────────────────────────────────────────────────────
 
@@ -135,7 +136,7 @@ const Bukhara = () => {
       {/* ══ HERO ═══════════════════════════════════════════════════════════ */}
       <section className="relative min-h-130 flex flex-col justify-end overflow-hidden">
         <img
-          src="/hero4.webp"
+          src={hero}
           alt="Bukhara State Medical University"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />

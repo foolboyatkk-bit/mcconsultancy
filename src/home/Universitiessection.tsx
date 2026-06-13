@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+// IMPORTANT: If you are using Next.js, import Link:
+// import Link from "next/link";
 
 import stavropol from "../assets/countries/stavropol/univ1img1.svg";
 import volgograd  from "../assets/countries/volgograd/univ2img1.svg";
-import nwsmu      from "../assets/university3.webp";
-import bukhara    from "../assets/university4.webp";
-import tashkent   from "../assets/university5.webp";
+import nwsmu      from "../assets/countries/northwestern/university3.webp";
+import bukhara    from "../assets/countries/bukhara/bukhara_state_medical_institute1_f3ae66fb3a (1).webp";
+import asia   from "../assets/countries/asia/asia.png";
 
 /* ── Reveal hooks ── */
 function useReveal(direction: "up" | "left" | "right" = "up") {
@@ -37,18 +39,21 @@ const RUSSIA = [
     name: "Stavropol State Medical University",
     country: "Russia",
     desc: "A top-ranked Russian medical university, widely chosen by Indian students. It offers globally recognized MBBS/MD degrees with strong clinical and research opportunities.",
+    link: "/countries/russia/stavropol" // <-- Added Link
   },
   {
     img: volgograd,
     name: "Volgograd State Medical University",
     country: "Russia",
     desc: "A globally recognized institution, known for excellence in medical education and research. Accredited by WHO and the Russian government, its graduates can work worldwide.",
+    link: "/countries/russia/volgograd" // <-- Added Link
   },
   {
     img: nwsmu,
     name: "North-Western State Medical University",
     country: "Russia",
     desc: "Blends Western and Russian medical education, offering a rich legacy since 1897. It ranks among Russia's top medical universities and plays a key role in healthcare.",
+    link: "/countries/russia/north-western" // <-- Added Link
   },
 ];
 
@@ -58,12 +63,14 @@ const UZBEKISTAN = [
     name: "Bukhara State Medical University",
     country: "Uzbekistan",
     desc: "Offers an English-medium 6-year MD program equivalent to MBBS in India. With strong clinical training and global recognition, it attracts students from across the world.",
+    link: "/countries/uzbekistan/bukhara" // <-- Added Link
   },
   {
-    img: tashkent,
-    name: "Tashkent State Medical University",
+    img: asia,
+    name: "Asia International University in Uzbekistan",
     country: "Uzbekistan",
-    desc: "A top Uzbek university focused on pediatric medicine since 1972. It offers strong academic training and contributes significantly to child healthcare in Central Asia.",
+    desc: "At AIU, we don't just teach—we ignite ambition. With world-class faculty, hands-on learning, and a global outlook, we empower students to become changemakers in medicine, technology, business, and beyond.",
+    link: "/countries/uzbekistan/asia" // <-- Added Link
   },
 ];
 
@@ -73,7 +80,7 @@ const CountryPill = ({ country }: { country: string }) => (
     className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase rounded-md backdrop-blur-md shadow-sm"
     style={{
       background: country === "Russia" ? "rgba(239,246,255,0.95)" : "rgba(240,253,244,0.95)",
-      color:      country === "Russia" ? "#1D4ED8"                 : "#15803D",
+      color:      country === "Russia" ? "#1D4ED8"                : "#15803D",
     }}
   >
     {country}
@@ -81,10 +88,11 @@ const CountryPill = ({ country }: { country: string }) => (
 );
 
 /* ── Types ── */
-type UniCardProps = { img: string; name: string; country: string; desc: string };
+// UPDATED: Added 'link' to the props
+type UniCardProps = { img: string; name: string; country: string; desc: string; link: string };
 
 /* ── Vertical Card (Russia 3-col grid) ── */
-const UniCard = ({ img, name, country, desc }: UniCardProps) => (
+const UniCard = ({ img, name, country, desc, link }: UniCardProps) => (
   <div className="group bg-white rounded-[20px] p-3 flex flex-col h-full transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_16px_40px_rgba(29,78,216,0.18)]">
     {/* Image */}
     <div
@@ -108,16 +116,18 @@ const UniCard = ({ img, name, country, desc }: UniCardProps) => (
       <h3 className="font-bold text-[#1a2472] text-base sm:text-lg leading-snug mb-3">{name}</h3>
       <div className="w-8 h-0.5 bg-linear-to-r from-[#1D4ED8] to-[#60A5FA] mb-4 transition-all duration-500 group-hover:w-20 rounded-full" />
       <p className="text-sm text-slate-500 leading-relaxed flex-1">{desc}</p>
-      <div className="mt-5 flex items-center gap-1.5 text-[#1D4ED8] text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0">
+      
+      {/* UPDATED: Changed from div to 'a' tag. (Use <Link href={link}> if using Next.js) */}
+      <a href={link} className="mt-5 w-fit flex items-center gap-1.5 text-[#1D4ED8] text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0 cursor-pointer">
         Learn more
         <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 text-xs">→</span>
-      </div>
+      </a>
     </div>
   </div>
 );
 
 /* ── Horizontal Card (Uzbekistan full-width) ── */
-const UniCardHorizontal = ({ img, name, country, desc, index }: UniCardProps & { index: number }) => (
+const UniCardHorizontal = ({ img, name, country, desc, link, index }: UniCardProps & { index: number }) => (
   <div className="group bg-white rounded-[20px] overflow-hidden flex flex-col sm:flex-row transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(21,128,61,0.15)]">
     {/* Image — left on sm+, top on mobile */}
     <div className="relative w-full sm:w-[38%] lg:w-[32%] shrink-0 overflow-hidden bg-slate-100" style={{ minHeight: "clamp(200px, 28vw, 260px)" }}>
@@ -153,10 +163,13 @@ const UniCardHorizontal = ({ img, name, country, desc, index }: UniCardProps & {
 
       {/* CTA row */}
       <div className="mt-6 flex items-center gap-4">
-        <div className="flex items-center gap-1.5 text-[#1D4ED8] text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0">
+        
+        {/* UPDATED: Changed from div to 'a' tag. (Use <Link href={link}> if using Next.js) */}
+        <a href={link} className="flex items-center gap-1.5 text-[#1D4ED8] text-sm font-semibold opacity-0 -translate-x-3 transition-all duration-400 group-hover:opacity-100 group-hover:translate-x-0 cursor-pointer">
           Learn more
           <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 text-xs">→</span>
-        </div>
+        </a>
+
         {/* Decorative dots */}
         <div className="ml-auto flex gap-1 opacity-20 group-hover:opacity-60 transition-opacity duration-500">
           {[...Array(3)].map((_, i) => (
