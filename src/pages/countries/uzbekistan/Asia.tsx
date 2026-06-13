@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import React from "react";
 import hero from "../../../assets/countries/asia/asia.png"
 import students from "../../../assets/countries/asia/students.jpg"
-import campus from "../../../assets/countries/asia/campus.jpg"
-import hostel from "../../../assets/countries/asia/hostal.jpg"
+import campus from "../../../assets/countries/asia/compus.webp"
+import hostel from "../../../assets/countries/asia/hostal.webp"
 
 // ── STATIC DATA ──────────────────────────────────────────────────────────────
 
