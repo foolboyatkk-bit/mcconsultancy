@@ -24,7 +24,7 @@ const OFFICES = [
 const CONTACT_DETAILS = [
   { label: "Proprietor", value: "Dr. M.S. Ramesh Babu MD (Russia)", isStrong: true },
   { label: "Consultancy Advisor", value: "R.N. Sowmya", isStrong: true },
-  { label: "Phone", value: "9500700113 · 8903492113", isStrong: false },
+  { label: "Phone", value: "+91 9500700113 | +91 8903492113", isStrong: false },
   { label: "Landline", value: "04651-272113", isStrong: false },
 ];
 

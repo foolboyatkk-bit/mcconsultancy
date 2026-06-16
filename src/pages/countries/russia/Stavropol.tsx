@@ -116,7 +116,7 @@ const SectionLabel = ({ children }: { children: string }) => (
 const Divider = () => <div className="w-14 h-0.5 bg-[#1976d2] my-6" />;
 
 const InfoTable = ({ head, rows }: { head: string[]; rows: string[][] }) => (
-  <div className="overflow-x-auto rounded-2xl border border-[#b3cde8] bg-white mb-10 shadow-sm">
+  <div className="overflow-x-auto rounded-2xl border border-[#b3cde8] bg-white mb-6 shadow-sm">
     <table className="w-full text-sm text-[#374151] min-w-170">
       <thead>
         <tr className="bg-[#dbeafe]">
@@ -496,22 +496,34 @@ const Stavropol: React.FC = () => {
           </h3>
           <InfoTable head={YEARLY_HEAD} rows={YEARLY_ROWS} />
 
-          <h3 className="text-lg font-semibold text-[#1a237e] mb-5 mt-12">
-            Adimission Process
+          {/* ADDED TEXT FROM IMAGE */}
+          <div className="bg-[#eef3fd] border border-[#b3cde8] rounded-xl p-5 mb-12 shadow-sm">
+            <p className="text-[#374151] text-[15px] leading-relaxed mb-2">
+              <strong className="text-[#1a237e]">Estimated total amount</strong> of tuition fees, Hostel and Health Insurance for the entire course: <strong className="text-[#1a237e]">Rs 2,970,000/-</strong>
+            </p>
+            <p className="text-[#6b7280] text-[14px] leading-relaxed">
+              * Amount is subject to change as per the exchange rate of US$ (1 US$ is approx. Rs.90/-).
+            </p>
+          </div>
+
+          <h3 className="text-lg font-semibold text-[#1a237e] mb-5">
+            Admission Process
           </h3>
-          <p className="text-[#4b5563] text-[15px] leading-relaxed mb-2 max-w-2xl">
-            Total admission process amount:{" "}
-            <strong className="text-[#1a237e]">Rs.2,00,000/-</strong> have to
-            pay in our consultancy account and get the receipt.
-          </p>
-          <p className="text-[#4b5563] text-[15px] leading-relaxed mb-2 max-w-2xl">
-            It includes admission letter, invitation, pickup and drop in the
-            airport, transportation, 3 months student visa and 2 days food in
-            the hostel.
-          </p>
-          <p className="text-[#4b5563] text-[15px] leading-relaxed mb-8 max-w-2xl">
-            Excluding ticket fare.
-          </p>
+          <ul className="list-disc pl-5 text-[#4b5563] text-[15px] leading-relaxed mb-8 max-w-2xl space-y-2 marker:text-[#1976d2]">
+            <li>
+              Total admission process amount:{" "}
+              <strong className="text-[#1a237e]">Rs.2,00,000/-</strong> have to
+              pay in our consultancy account and get the receipt.
+            </li>
+            <li>
+              It includes admission letter, invitation, pickup and drop in the
+              airport, transportation, 3 months student visa and 2 days food in
+              the hostel.
+            </li>
+            <li>
+              Excluding ticket fare.
+            </li>
+          </ul>
 
           <div className="rounded-2xl bg-[#1a237e] text-white text-center py-6 px-8 font-semibold text-lg mb-12 shadow-sm">
             All Fees Are Paid Directly to the College — No Hidden Charges
